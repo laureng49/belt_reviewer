@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Book</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'belt_review/css/styles.css' %}"media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <a href="/home"><button>Home</button></a>
+    <a href="/logout"><button>Logout</button></a>
+    <h1>{{book.title}}</h1>
+    <h4>Author: {{book.author.name}}</h4>
+    <div class="reviews">
+      <h4>Reviews:</h4>
+      <hr>
+      {% for review in reviews %}
+      <p>Rating: {{review.rating}} star(s)</p>
+        <a href="/users/{{review.user.id}}">{{review.user.alias}}</a>
+
+         says {{review.review}}
+      <p>Posted: {{review.created_at}}</p>
+        {% if review.user == logged_user%}
+        <a href="/delete/{{review.id}}"><button id="delete">Delete this Review</button></a>
+        {% endif %}
+      <hr>
+      {% endfor %}
+
+
+
+
+
+
+    </div>
+    <div class="addreview">
+      <h3>Add a Review:</h3>
+      <form action="/add_review/{{book.id}}" method="post">
+        {% csrf_token %}
+        <textarea name="review"></textarea>
+          Rating: <select name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <input type="submit" value="Submit Review">
+      </form>
+
+
+
+
+    </div>
+
+  </body>
+</html>

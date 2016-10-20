@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Book and Review</title>
+  </head>
+  <body>
+    <a href="/home"><button>Home</button></a>
+    <a href="/logout"><button>Logout</button></a>
+
+    <h2>Add a New Book Title and a Review:</h2>
+    {% if messages %}
+      {% for message in messages %}
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}> {{message}}</p>
+      {% endfor %}
+    {% endif %}
+
+    <div class="addbook">
+      <form action="/add_book" method="post">
+        {% csrf_token %}
+        <h4>Book Title:<input type="text" name="title"></h4>
+
+        <h4>Author:</h4>
+          <p>Choose from the list:<select name="author">
+              <option default value = "">Choose an Author</option>
+              {% for author in authors %}
+              <option value="{{author.id}}">{{author.name}}</option>
+              {% endfor %}
+
+          </select></p>
+          <p>Or add a new author:<input type="text" name="newauthor"></p>
+
+        <h4>Review:<input type="textarea" name="review"></h4>
+        <h4>Rating:
+          <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </h4>
+        <input type="submit" value="Add a Book and Review">
+      </form>
+
+    </div>
+  </body>
+</html>

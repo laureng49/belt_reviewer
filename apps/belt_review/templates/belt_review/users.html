@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Users</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'belt_review/css/styles.css' %}"media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <a href="/home"><button>Home</button></a>
+    <a href="/add"><button>Add Book and Review</button></a>
+    <a href="/logout"><button>Logout</button></a>
+
+    <h2>User Alias: {{user.alias}}</h2>
+    <h3>Name: {{user.name}}</h3>
+    <h3>Email: {{user.email}}</h3>
+    <h3>Total reviews: {{rating}}</h3>
+    <h3>Posted Reviews on the following books:</h3>
+    <!-- forloop -->
+    <div class="scroll">
+    {% for review in user.review_set.all %}
+
+    <p><a href="/books/{{review.book.id}}">{{review.book.title}}</a></p>
+    {% endfor %}
+    </div>
+
+
+
+  </body>
+</html>

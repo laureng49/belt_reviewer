@@ -1,0 +1,87 @@
+*{
+  color: grey;
+  font-family: helvetica;
+}
+body{
+  width: 1000px;
+}
+a{
+  color: blue;
+}
+button{
+  margin: 10px 10px 10px 650px;
+
+  display: block;
+}
+
+h1{
+  margin: 10px;
+}
+#red{
+  color: red;
+}
+
+.header{
+  padding: 10px;
+  margin: 10px;
+}
+
+.reg{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+  width: 45%;
+}
+.log{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+  width: 45%;
+}
+
+
+.left{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+  width: 40%;
+  height: 250px;
+  overflow: scroll;
+  border: 1px dashed grey;
+}
+  .left h2{
+    padding: 2%;
+  }
+.right{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+  width: 40%;
+  height: 250px;
+  overflow: scroll;
+  border: 1px dashed grey;
+}
+  .right h2{
+    padding: 2%;
+  }
+.reviews{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+  width: 40%;
+}
+.addreview{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 auto;
+  width: 40%;
+}
+.scroll{
+  height: 250px;
+  overflow: scroll;
+  border: 1px dashed grey;
+  width: 40%;
+}
+#delete{
+  margin: 0;
+}

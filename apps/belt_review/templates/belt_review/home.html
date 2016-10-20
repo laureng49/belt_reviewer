@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'belt_review/css/styles.css' %}"media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <div class="header">
+      <a href="/add"><button>Add Book and Review</button></a>
+      <a href="/logout"><button>Logout</button></a>
+      <h1>Welcome, {{user.alias}}!</h1>
+    </div>
+    <div class="left">
+      <h2>Recent Book reviews:</h2>
+
+      {% for review in review %}
+      <h4><a href="/books/{{review.book.id}}">{{review.book.title}}</a></h4>
+      <p>Rating: {{review.rating}} star(s)</p>
+      <p><a href="/users/{{review.user.id}}">{{review.user.alias}}</a> says: {{review.review}}</p>
+      <p>Posted: {{review.created_at}}</p>
+      <hr>
+      {% endfor %}
+
+      <!-- show latest three -->
+    </div>
+    <div class="right">
+      <h2>Other Books with Reviews:</h2>
+
+      {% for book in books %}
+      <p><a href="/books/{{book.id}}">{{book.title}}</a></p>
+      {% endfor %}
+
+
+    </div>
+
+
+
+
+  </body>
+
+</html>
